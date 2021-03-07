@@ -1,0 +1,13 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#top-bar {
+  border-bottom: 1px solid #7F7F7F;
+  margin-bottom: 15px;
+}
