@@ -15,16 +15,19 @@ block content
         form
           div.form-group
             label(for='mail-content') Email address
-            input#mail-content.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email')
+            input#mail-content.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email' name='email')
             small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
           div.form-group
             textarea#exampleInputEmail123.form-control
       div.col
         label(for='rss-url') RSS url
-        div.input-group.mb-3
-          input#rss-url.form-control(type='text' aria-label="Recipient's username" aria-describedby='button-addon2')
-          div.input-group-append
-            button#button-addon2.btn.btn-outline-secondary(type='button') Add
+        form(action='/testowe' method='post')
+          div.input-group.mb-3
+            input#rss-url.form-control(type='text' aria-label="Recipient's username" aria-describedby='button-addon2' name='fname')
+            div.input-group-append
+              button#button-addon2.btn.btn-outline-secondary(type='submit') Add
         nav(aria-label='breadcrumb')
           ol.breadcrumb
             li.breadcrumb-item.active(aria-current='page') RSS
+            li.breadcrumb-item.active(aria-current='page') Damian
+            li.breadcrumb-item.active(aria-current='page') Wolkowicz
