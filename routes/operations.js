@@ -3,7 +3,6 @@ var router = express.Router();
 
 router.post('/testowe', function(req, resp, next) {
     console.log(req.body);
-    alert("Udalo sie");
     resp.redirect('/');
 });
 
