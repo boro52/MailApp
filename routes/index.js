@@ -5,24 +5,17 @@ var mongo = require('mongodb');
 var url = "mongodb://localhost:27017/test";
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', async function(req, res, next) {
 
-router.get('/get-data', function (req, resp, next) {
-
-});
-
-router.post('/testowe', function(req, resp, next) {
-  console.log(req.body);
-  resp.send(req.body.fname);
-});
-
-router.post('/insert', function(req, resp, next) {
-
-});
-
-router.post('/insert', function(req, resp, next) {
+  const printPage = async () =>
+      (
+        new Promise((resolve, reject) =>
+        {
+          res.render('index', { title: 'Express' });
+          //resolve();
+        })
+      )
+  await printPage();
 
 });
 

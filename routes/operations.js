@@ -1,8 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+router.post('/testowe', function(req, resp, next) {
+    console.log(req.body);
+    alert("Udalo sie");
+    resp.redirect('/');
+});
+
+router.post('/addRecord', function(req, resp, next) {
+
+});
+
+router.post('/removeRecord', function(req, resp, next) {
+
 });
 
 module.exports = router;
