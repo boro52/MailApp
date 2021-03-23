@@ -19,11 +19,14 @@ block content
             small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
           div.form-group
             textarea#exampleInputEmail123.form-control
+            ul
+              each task in tasks
+                li= task.title
       div.col
         label(for='rss-url') RSS url
-        form(action='/operations/testowe' method='post')
+        form(action='/testowe' method='post')
           div.input-group.mb-3
-            input#rss-url.form-control(type='text' aria-label="Recipient's username" aria-describedby='button-addon2' name='fname')
+            input#rss-url.form-control(type='text' aria-label="Recipient's username" aria-describedby='button-addon2' name='rssUrl')
             div.input-group-append
               button#button-addon2.btn.btn-outline-secondary(type='submit') Add
         nav(aria-label='breadcrumb')
