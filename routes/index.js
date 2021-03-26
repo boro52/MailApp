@@ -32,8 +32,9 @@ router.post('/testowe', function(req, resp, next) {
 
         console.log(test);
         test.items.forEach(item => { console.log(item.title + " " + item.content);  array.push(item);})
-    })().then(()=>{resp.redirect('/');});
-
+    })();
+    //().then(()=>{resp.redirect('/');});
+    resp.redirect('/');
 });
 
 router.post('/addRecord', function(req, resp, next) {
