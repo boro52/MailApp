@@ -1,44 +1,34 @@
 var express = require('express');
 var router = express.Router();
 var mongo = require('mongodb');
-var array = new Array();
+var urls = new Array();
+var rssData = new Array();
+var rssDataToDisplay = new Array();
 var parser = require('rss-parser');
 rssParser = new parser();
 
 var url = "mongodb://localhost:27017/test";
 
-/* GET home page. */
 router.get('/',async function(req, res, next) {
-
-    const fun = async function(){ res.render('index', { title: 'Express', tasks : array}); };
-  // const printPage = async () =>
-  //     (
-  //       new Promise((resolve, reject) =>
-  //       {
-  //         res.render('index', { title: 'Express' });
-  //         //resolve();
-  //       })
-  //     )
-    //odpytaj baze danych
-    //printpage(dane)
-  await fun();
-
+    res.render('index', { title: 'Express', dataToDisplay : rssDataToDisplay, items : urls});
 });
 
-router.post('/testowe', function(req, resp, next) {
-
+router.post('/addNewUrl', function(req, resp, next) {
     ( async () => {
-        const test = await rssParser.parseURL(req.body.rssUrl);
-
-        console.log(test);
-        test.items.forEach(item => { console.log(item.title + " " + item.content);  array.push(item);})
+        urls.push(req.body.rssUrl);
+        const dataFromUrl = await rssParser.parseURL(req.body.rssUrl);
+        await dataFromUrl.items.forEach(item => {rssData.push(item);})
+        resp.redirect('/');
     })();
-    //().then(()=>{resp.redirect('/');});
+});
+
+router.post('/displayMail', function(req, resp, next) {
+    rssDataToDisplay = rssData;
     resp.redirect('/');
 });
 
 router.post('/addRecord', function(req, resp, next) {
-    //var record = { url : }
+
 });
 
 router.post('/removeRecord', function(req, resp, next) {

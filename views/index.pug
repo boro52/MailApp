@@ -7,7 +7,7 @@ block content
         use(xlink:href='./images/bootstrap-icons.svg#rss') RSS
     div.d-flex.flex-row-reverse.bd-highlight
       button.btn.btn-success.ml-1(type='button') Save
-      button.btn.btn-secondary.ml-1(type='button') Preview
+      button.btn.btn-secondary.ml-1(type='button' onclick='displayNewData()') Preview
       button.btn.btn-danger(type='button') Send
   div.container
     div.row
@@ -18,19 +18,21 @@ block content
             input#mail-content.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email' name='email')
             small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
           div.form-group
-            textarea#exampleInputEmail123.form-control
-            ul
-              each task in tasks
-                li= task.title
+            each mail in dataToDisplay
+              h1= mail.title
+              p= mail.content
+
       div.col
         label(for='rss-url') RSS url
-        form(action='/testowe' method='post')
+        form(action='/addNewUrl' method='post')
           div.input-group.mb-3
             input#rss-url.form-control(type='text' aria-label="Recipient's username" aria-describedby='button-addon2' name='rssUrl')
             div.input-group-append
               button#button-addon2.btn.btn-outline-secondary(type='submit') Add
-        nav(aria-label='breadcrumb')
-          ol.breadcrumb
-            li.breadcrumb-item.active(aria-current='page') RSS
-            li.breadcrumb-item.active(aria-current='page') Damian
-            li.breadcrumb-item.active(aria-current='page') Wolkowicz
+        ul.list-group
+          each item in items
+            li.list-group-item= item
+              button#button-addon2.btn.btn-outline-secondary(type='button') Delete
+
+block scripts
+  script(src="javascripts/index.js")

@@ -23,3 +23,12 @@ const removeRecord = (id) => {
         window.location = '/'
     })
 }
+
+const displayNewData = () => {
+    fetch('/displayMail', {
+        method: 'post'
+    })
+    .finally(() => {
+        window.location = '/'
+    })
+}
